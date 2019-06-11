@@ -290,16 +290,36 @@
 	.list-product p:last-child{
 		font-size: 0.2rem;
 	}
+	@media (min-height:700px) {
+		
+	}
 	@media (min-width:980px) {
+		.list-product p:first-child{
+			font-size: 0.1rem;
+			font-weight: bold;
+		}
+		.list-product p:last-child{
+			font-size: 0.1rem;
+		}
 		.list-product:not(:last-child)::after {
 			
-			top: calc(23%);
+			top: calc(17%);
 			
 		}
-				
+			.fix {
+    position: absolute;
+    top: calc(27%);
+    left: calc(17%);
+}	
+.div-img {
+    height: calc(50%);
+}
+.progress-footer{
+	bottom: calc(30%);
+}
 		.list-product:not(:last-child):not(:first-child)::after {
 			
-			top: calc(23%);
+			top: calc(17%);
 			
 		}
 	}
@@ -626,7 +646,7 @@
 	
 		.left-f-fix {
 			width: 35%;
-			position: relative;
+			position: absolute;
 			right: 82px;
 			top: 37px;
 			text-align: center;
@@ -838,7 +858,7 @@
 				background-repeat: no-repeat;
 				height: 100%;
 				float: left;
-				position: relative;
+				position: absolute;
 			}
 		
 			.left-f-fix {

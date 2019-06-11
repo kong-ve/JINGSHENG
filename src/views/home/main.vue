@@ -6,13 +6,18 @@
 				<el-carousel-item key="3"><img src="../../assets/banner/2.jpg" class="el-carousel-img" /></el-carousel-item>
 			</el-carousel>
 			<h4 class="title">涵括业务</h4>
-			<div style="padding:6%;">
-				<div align="center">
-					<el-tabs v-model="activeName" @tab-click="handleClick" stretch="true">
+			<div style="padding-left: 10%;">
+				<div align="center" style="padding-top: 50px;">
+					<!-- <el-tabs v-model="activeName" @tab-click="handleClick" stretch="true">
 						<el-tab-pane label="01-技术解决" name="first" class="f-t">技术解决</el-tab-pane>
 						<el-tab-pane label="02-HR服务解决方案" name="second" class="f-t">HR服务解决方案</el-tab-pane>
 						<el-tab-pane label="03-虚拟数字产品分销与服务" name="third"class="f-t">虚拟数字产品分销与服务</el-tab-pane>
-					</el-tabs>
+					</el-tabs> -->
+					<ul class="tab-list">
+						<li :class="[first?activeClass:'',tabCss]" @click="changeClick('first')">01-<span>技术解决</span></li>
+						<li :class="[two?activeClass:'',tabCss]" @click="changeClick('two')">02-<span>HR服务解决方案</span></li>
+						<li :class="[three?activeClass:'',tabCss]" @click="changeClick('three')">03-<span>虚拟数字产品分销与服务</span></li>
+					</ul>
 				</div>
 				<div class="grid-content">
 					<div class="left"><img src="../../assets/image/首页_02_06.jpg.png" class="img-list" /></div>
@@ -143,7 +148,13 @@
 export default {
 	data() {
 		return {
-			activeName: 'first'
+			first: true,
+			two: false,
+			three: false,
+			tabCss:'tab-list-view',
+			activeClass: 'active',
+				
+			
 		};
 	},
 	mounted() {
@@ -159,6 +170,21 @@ export default {
 		handleClick(tab, event) {
 			console.log(tab, event);
 		},
+		changeClick(tab){
+			if(tab == 'first'){
+				this.first = true;
+				this.two = false;
+				this.three = false;
+			}else if(tab == 'two'){
+				this.first = false;
+				this.two = true;
+				this.three = false;
+			}else if(tab == 'three'){
+				this.first = false;
+				this.two = false;
+				this.three = true;
+			}
+		}
 	},
 	created() {
 		let h = document.querySelector('.el-carousel-img').height;
@@ -221,9 +247,38 @@ export default {
 	.f-t{
 		font-size: x-large
 	}
+	.tab-list {
+    width: 90%;
+    text-align: center;
+    height: 50px;
+	.tab-list-view {
+    width: 30%;
+    float: left;
+    color: #000;
+    font-weight: 600;
+    font-family: "Arial";
+    font-size: 24px;
+    line-height: 50px;
+    padding-left: 2%;
+	position: relative;
+	span{
+		font-family: "思源黑体 CN";
+		font-size: 23px;
+		font-weight: bold;
+	}
 	
-	
-	
+}
+.actives::after{
+		 content: " ";
+		 display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: calc(40%);
+    width: calc(30%);
+    height: 3px;
+    background: #24deea;
+	}
+}
 	.footer-alt{
 		width: 100%;
 		height: 100%;
@@ -362,8 +417,9 @@ export default {
 .card-body {
 	padding: 16px;
 	height: 4.5rem;
+	
 	overflow: hidden;
-	font-size: large;
+	font-size: 20px;
 }
 
 .grid-content {
@@ -392,6 +448,7 @@ export default {
 	-webkit-transition: 0.3s;
 	transition: 0.3s;
 	padding: 16px 0;
+	padding-left: 20px;
 }
 .alow-left {
 	-webkit-box-shadow: -4px -3px 12px 0px rgba(0, 0, 0, 0.1);
@@ -407,7 +464,9 @@ export default {
 	color: #000;
 	text-align: center;
 	padding-top: 50px;
-	font-size: 0.8rem;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	font-size: 34px;
 }
 .tab {
 	color: #000;
@@ -470,12 +529,94 @@ export default {
 	height: 100%;
 }
 
+@media (max-width:1280px) {
+	.card-header{
+		font-size: 0.1rem;
+	}
+	.card-body{
+		font-size: 0.35rem;
+	}
+	.tab-list {
+	width: 90%;
+	text-align: center;
+	height: 50px;
+	.tab-list-view {
+	width: 30%;
+	float: left;
+	color: #000;
+	font-weight: 600;
+	font-family: "Arial";
+	font-size: 14px;
+	line-height: 50px;
+	padding-left: 2%;
+	position: relative;
+	span{
+		font-family: "思源黑体 CN";
+		font-size: 16px;
+		font-weight: bold;
+	}
+	}
+	}
+	.top_list .top_list_card{
+		padding: .3rem;;
+	}
+	.top_list{
+		// height: 5rem;
+	}
+	.card_list_body{
+		padding: .1rem;
+		height: 4rem !important;
+	}
+	#proList .l_p{
+		padding: 0;
+	}
+	.footer-bottom{
+		background-size: contain;
+	}
+}
 
 
-
-@media (max-width: 850px) {
+@media (max-width: 860px) {
 	.el-tabs__active-bar {
 		left: calc(18%);
+	}
+	.card-header{
+		font-size: 0.1rem;
+	}
+	.card-body{
+		font-size: 0.2rem;
+	}
+	.tab-list {
+	    width: 96%;
+	    text-align: center;
+	    height: 50px;
+		.tab-list-view {
+	    width: 30%;
+	    float: left;
+	    color: #000;
+	    font-weight: 600;
+	    font-family: "Arial";
+	    font-size: 12px;
+	    line-height: 50px;
+	    padding-left: 2%;
+		position: relative;
+		span{
+			font-family: "思源黑体 CN";
+			font-size: 12px;
+			font-weight: bold;
+		}
+		
+	}
+	.actives::after{
+			 content: " ";
+			 display: inline-block;
+	    position: absolute;
+	    bottom: 0;
+	    left: calc(40%);
+	    width: calc(30%);
+	    height: 3px;
+	    background: #24deea;
+		}
 	}
 	#logo_list {
     margin-left: 20%;
@@ -498,7 +639,7 @@ export default {
 	}
 	.floats {
 		padding: 1px !important;
-		font-size: 0.5rem !important;
+		font-size: 0.35rem !important;
 	}
 	.card-body {
 		font-size: 0.25rem !important;
@@ -544,6 +685,7 @@ export default {
 		font-size: xx-small;
 		padding: 0.1rem !important;
 		height: auto;
+		text-align: left;
 	}
 	.top_list .top_list_card{
 		padding: .5rem;;
@@ -587,25 +729,35 @@ export default {
 		}
 	}
 }
-@media (max-width:1024px) {
-	.top_list .top_list_card{
-		padding: .3rem;;
-	}
-	.top_list{
-		// height: 5rem;
-	}
-	.card_list_body{
-		padding: .1rem;
-		height: 4rem !important;
-	}
-	#proList .l_p{
-		padding: 0;
-	}
-	.footer-bottom{
-		background-size: contain;
-	}
-}
+
 @media (max-width: 700px) {
+	.card-header{
+		font-size: 0.1rem;
+	}
+	.card-body{
+		font-size: 0.2rem;
+	}
+	.tab-list {
+	width: 90%;
+	text-align: center;
+	height: 50px;
+	.tab-list-view {
+	width: 30%;
+	float: left;
+	color: #000;
+	font-weight: 600;
+	font-family: "Arial";
+	font-size: 10px;
+	line-height: 50px;
+	padding-left: 2%;
+	position: relative;
+	span{
+		font-family: "思源黑体 CN";
+		font-size: 10px;
+		font-weight: bold;
+	}
+	}
+	}
 	.footer{
 		.footer-alt{
 			width: 100%;

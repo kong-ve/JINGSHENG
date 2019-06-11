@@ -235,9 +235,12 @@ export default {
     opacity:.5;
     display:block;
     padding:0 22px;
+	font-family:"微软雅黑";
+	font-size: 15px;
 }.header .nav-item a.active,
 .header .nav-item a:hover {
     opacity:1;
+	font-size: 17px;
 }.header .nav-item a.active:after {
     content:"";
     display:inline-block;
