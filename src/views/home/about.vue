@@ -86,34 +86,40 @@
 	background-repeat: no-repeat;
 	}
 	.div-img-left {
-		width: 35%;
+		width: 50%;
     float: left;
-    position: absolute;
-    top: calc(39%);
-    left: calc(15%);
+    left: calc(25%);
+	height: 100%;
+	display: inline-block;
 	}
 
 	.fix {
-		position: absolute;
     top: calc(40%);
     left: calc(17%);
 	}
 
 	.div-img {
-		height: calc(80%);
-    padding: 25px;
-    position: absolute;
+		zoom: 1;
+    padding: 10px;
     top: calc(16%);
-	width: 80%;
+	width: 100%;
+	height: 35%;
 	
+	}
+	.div-img::after{
+		content: "";
+		display: block;
+		visibility: hidden;
+		clear: both;
+		height: 0;
 	}
 
 	.div-img-right {
-		width: 35%;
+		width: 50%;
     float: right;
-    position: absolute;
-    right: calc(8%);
-	top: calc(39%);
+    right: calc(10%);
+	height: 100%;
+	display: inline-block;
 	}
 
 	.product-list-header {
@@ -122,35 +128,37 @@
 		list-style: none;
 		height: 100px;
 		margin: 0 5%;
+		position: relative;
 	}
 
 	.list-product {
 		float: left;
 		padding: 30px;
 		width: 30%;
+		position: relative;
 	}
 
 	.list-product:not(:last-child)::after {
 		content: "";
-		display: inline-block;
-		position: absolute;
-		top: calc(23%);
-		left: calc(33%);
-		width: 1px;
-		height: 46px;
+		top: calc(35%);
+    width: 2px;
+    height: 0.5rem;
+    background: #000;
+    position: absolute;
+    right: 0%;
 		background: #aeaeae;
 	}
 	
-	.list-product:not(:last-child):not(:first-child)::after {
+	/* .list-product:not(:last-child):not(:first-child)::after {
 		content: "";
-		display: inline-block;
+		top: calc(35%);
+		width: 2px;
+		height: 0.5rem;
+		background: #000;
 		position: absolute;
-		top: calc(23%);
-		left: calc(60%);
-		width: 1px;
-		height: 46px;
+		right: 0%;
 		background: #aeaeae;
-	}
+	} */
 
 	.main-body {
 		padding: 0.5%;
@@ -251,17 +259,15 @@
 	}
 
 	.progress-footer {
-		padding-bottom: 30px;
-		position: absolute;
-		left: calc(8%);
-		bottom: calc(2%);
+		padding-top: 10px;
 		text-align: center;
 		width: 80%;
 		font-size: 0.3rem;
+		margin-left: 5%;
 	}
 
 	.div-img img {
-		width: 80%;
+		height: 100%;
 	}
 
 	.body-header {
@@ -275,7 +281,7 @@
 	}
 
 	.message-box {
-		padding-top: 5px;
+		padding-top: 10px;
 		font-size: 0.3rem;
 		text-align: center;
 
@@ -295,33 +301,16 @@
 	}
 	@media (min-width:980px) {
 		.list-product p:first-child{
-			font-size: 0.1rem;
+			font-size: 0.3rem;
 			font-weight: bold;
 		}
 		.list-product p:last-child{
-			font-size: 0.1rem;
+			font-size: 0.01rem;
 		}
-		.list-product:not(:last-child)::after {
 			
-			top: calc(17%);
-			
-		}
-			.fix {
-    position: absolute;
-    top: calc(27%);
-    left: calc(17%);
-}	
-.div-img {
-    height: calc(50%);
-}
 .progress-footer{
 	bottom: calc(30%);
 }
-		.list-product:not(:last-child):not(:first-child)::after {
-			
-			top: calc(17%);
-			
-		}
 	}
 	@media (max-width:1425px) {
 		.list-product p:first-child{
@@ -334,23 +323,18 @@
 		.div-img-left {
 				width: 50%;
 				float: left;
-				position: absolute;
 				left: 15%;
 				top: calc(65%);
+				display: inline-block;
 			}
 		
 			.fix {
-				position: absolute;
-				bottom: 170px;
-				left: calc(8%);
 				width: 81%;
 			}
 		
 			.div-img {
-				height: calc(30%);
 				padding: 5px;
 				top: calc(15%);
-				position: absolute;
 				width: 80%;
 				font-size: 0.25em;
 		
@@ -359,9 +343,9 @@
 			.div-img-right {
 				width: 50%;
 				float: right;
-				position: absolute;
 				right: calc(-15%);
 				top: calc(65%);
+				display: inline-block;
 			}
 		
 			.product-list-header {
@@ -381,27 +365,7 @@
 		
 			
 		
-			.list-product:not(:last-child)::after {
-				content: "";
-				display: inline-block;
-				position: absolute;
-				top: calc(19%);
-				left: calc(35%);
-				width: 1px;
-				height: 36px;
-				background: #aeaeae;
-			}
-		
-			.list-product:not(:last-child):not(:first-child)::after {
-				content: "";
-				display: inline-block;
-				position: absolute;
-				top: calc(19%);
-				left: calc(65%);
-				width: 1px;
-				height: 36px;
-				background: #aeaeae;
-			}
+			
 		
 			.main-body {
 				padding: 2%;
@@ -504,9 +468,6 @@
 		
 			.progress-footer {
 				padding-bottom: 30px;
-				position: absolute;
-				left: calc(5%);
-				bottom: calc(10%);
 				text-align: center;
 				width: 90%;
 			}
@@ -541,23 +502,15 @@
 		.div-img-left {
 			width: 50%;
 			float: left;
-			position: absolute;
 			left: 5%;
 			top: calc(66%);
 		}
 	
-		.fix {
-			position: absolute;
-			bottom: 170px;
-			left: calc(8%);
-			width: 81%;
-		}
+		
 	
 		.div-img {
-			height: calc(22%);
 			padding: 5px;
 			top: calc(23%);
-			position: absolute;
 			width: 90%;
 	
 		}
@@ -565,7 +518,6 @@
 		.div-img-right {
 			width: 50%;
 			float: right;
-			position: absolute;
 			left: calc(55%);
 			top: calc(65%);
 		}
@@ -588,27 +540,7 @@
 	
 		
 	
-		.list-product:not(:last-child)::after {
-			content: "";
-			display: inline-block;
-			position: absolute;
-			top: calc(19%);
-			left: calc(35%);
-			width: 1px;
-			height: 36px;
-			background: #aeaeae;
-		}
-	
-		.list-product:not(:last-child):not(:first-child)::after {
-			content: "";
-			display: inline-block;
-			position: absolute;
-			top: calc(19%);
-			left: calc(65%);
-			width: 1px;
-			height: 36px;
-			background: #aeaeae;
-		}
+		
 	
 		.main-body {
 			padding: 2%;
@@ -711,10 +643,7 @@
 		}
 	
 		.progress-footer {
-			padding-bottom: 30px;
-			position: absolute;
-			left: calc(8%);
-			bottom: calc(8%);
+			padding-top: 10px;
 			text-align: center;
 			width: 80%;
 		}
@@ -755,24 +684,14 @@
 		}
 		.div-img-left {
 				width: 50%;
-				float: left;
-				position: absolute;
 				left: 5%;
-				top: calc(66%);
 			}
 		
-			.fix {
-				position: absolute;
-				top: calc(25%);
-				left: calc(8%);
-				width: 81%;
-			}
+			
 		
 			.div-img {
-				height: calc(22%);
 				padding: 5px;
 				top: calc(28%);
-				position: absolute;
 				width: 90%;
 				font-size: 0.41rem;
 		
@@ -780,10 +699,7 @@
 		
 			.div-img-right {
 				width: 50%;
-				float: right;
-				position: absolute;
 				left: calc(55%);
-				top: calc(65%);
 			}
 		
 			.product-list-header {
@@ -803,27 +719,7 @@
 		
 			
 		
-			.list-product:not(:last-child)::after {
-				content: "";
-				display: inline-block;
-				position: absolute;
-				top: calc(19%);
-				left: calc(35%);
-				width: 1px;
-				height: 36px;
-				background: #aeaeae;
-			}
-		
-			.list-product:not(:last-child):not(:first-child)::after {
-				content: "";
-				display: inline-block;
-				position: absolute;
-				top: calc(19%);
-				left: calc(65%);
-				width: 1px;
-				height: 36px;
-				background: #aeaeae;
-			}
+			
 		
 			.main-body {
 				padding: 2%;
@@ -929,9 +825,6 @@
 		
 			.progress-footer {
 				padding-bottom: 30px;
-				position: absolute;
-				left: calc(5%);
-				bottom: calc(6%);
 				text-align: center;
 				width: 90%;
 			}
