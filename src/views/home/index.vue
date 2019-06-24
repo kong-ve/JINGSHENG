@@ -6,7 +6,7 @@
 					<h1>
 						<a href="#/home/main" class="router-link-active" @click="hangeChange('first')">
 							<img src="../../assets/image/首页-1_01_02.jpg.png" alt="element-logo" class="nav-logo" />
-							<img src="../../assets/image/logo.png" alt="element-logo" class="nav-logo-small" style="max-width: 30px;" />
+							<img src="../../assets/image/首页-1_01_02.jpg.png" alt="element-logo" class="nav-logo-small" style="max-height: 60px;" />
 						</a>
 					</h1>
 					<ul class="nav">
@@ -22,7 +22,32 @@
 								</a>
 							</h1>
 						</li>
+						<li class="nav-item nav-item-small" @click="menuShow = !menuShow">
+							<h1><span><img src="../../assets/icons/nav.png" alt="" class="nav-logo-small"></span></h1>
+						</li>
 					</ul>
+					<div class="header-right" v-if="menuShow">
+					    <ul>
+							<li>
+								<h1>
+									<a href="#/home/main" class="router-link-active" @click="hangeChange('first')">
+										<img src="../../assets/icons/white.png" alt="element-logo" class="nav-logo-small" style="max-height: 60px;" />
+									</a>
+									<a @click="menuShow = !menuShow" class="close-right"><i class="el-icon-error"></i></a>
+								</h1>
+							</li>
+							<li class="item-value"><a :class="{'active':first}" @click="hangeChange('first')">首页</a></li>
+							<li class="item-value"><a href="#/home/about" :class="{'active':two}" @click="hangeChange('two')">关于我们</a></li>
+							<li class="item-value"><a href="#/home/cell" :class="{'active':three}" @click="hangeChange('three')">联系我们</a></li>
+							<li  class="item-value">
+								<h1>
+									<a href="#/home/main" class="router-link-active" @click="hangeChange('first')">
+										<img src="../../assets/image/首页-1_01_10.jpg.png" alt="element-logo" class="nav-logo-small" style="max-height: 60px;" />
+									</a>
+								</h1>
+							</li>
+							</ul>
+					</div>
 				</div>
 			</header>
 		</el-header>
@@ -55,7 +80,7 @@ export default {
 			routers: constantRouterMap,
 			passwordLoading: false,
 			passwordFormVisible: false,
-			cssText:document.body.clientHeight-80
+			cssText:document.body.clientHeight-60
 		};
 	},
 	components: {
@@ -83,6 +108,7 @@ export default {
 			this.$store.dispatch('ShowSideBar');
 		},
 		hangeChange(id){
+			menuShow = false;
 			switch(id){
 				case 'first':
 				this.first = true;
@@ -128,17 +154,23 @@ export default {
 
 <style type="text/scss" lang="scss">
 	@import "../../styles/mixin";
-	
+	.el-main{
+		overflow-x:hidden !important;
+	}
+	body{
+		font-size: 1px !important;
+		-webkit-text-size-adjust:none;
+	}
 .headerWrapper {
-    height:80px
+    height:60px
 }.header {
-    height:80px;
+    height:60px;
     background-color:#fff;
     color:#fff;
     top:0;
     left:0;
     width:100%;
-    line-height:80px;
+    line-height:60px;
     z-index:100;
     position:relative
 }.header .container {
@@ -170,10 +202,13 @@ export default {
 }.header .nav {
     float:right;
     height:100%;
-    line-height:80px;
+    line-height:60px;
     background:transparent;
     padding:0;
     margin:0;
+}
+.header .nav .nav-item-small{
+	display: none;
 }
 .header .nav:after,
 .header .nav:before {
@@ -197,8 +232,13 @@ export default {
 .header .nav-logo-small,
 .header .nav-logo {
     vertical-align:sub;
+	height: 60px;
+	display: none;
 }
-.header .nav-logo-small {
+.header-right{
+	display: none;
+}
+.header .nav-item-small {
     display:none
 }.header .nav-item {
     margin:0;
@@ -292,6 +332,55 @@ export default {
 }
 }
 @media(max-width:850px) {
+	.header .nav .nav-item{
+		display: none;
+	}
+	.header-right{
+		display: block;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: #333;
+	}
+	.header-right ul{
+		width: 100%;
+	}
+	.header-right ul li{
+		width: 100%;
+		line-height: 0.5rem;
+		font-size: large;
+		color: #fff;
+		height:auto;
+		padding: 3%;
+	}
+	.close-right{
+		position: absolute;
+		right: 5%;
+		top: 1%;
+	}
+	.close-right i{
+		color: #fff;
+	}
+	.header-right ul .item-value{
+		text-align: center;
+		}
+		.item-value a{
+			color: #fff;
+		}
+		.item-value .active{
+			font-weight: bold;
+			}
+	.header-right ul li h1{
+		width: 100%;
+	}
+	.header .nav .nav-item-small{
+		display:inline-block;
+		height: 100%;
+	}
+	.header .nav .nav-item-small img{
+		height: 100%;
+	}
 	.header .nav-logo {
         display:none;
     }.header .nav-logo-small {
@@ -348,7 +437,7 @@ export default {
 
 #app.is-component .main-cnt {
     padding: 0;
-    margin-top: 80px;
+    margin-top: 60px;
     // height:460px;
 }
 @media(max-width:1024px) {
